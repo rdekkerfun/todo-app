@@ -1,13 +1,241 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #dddddd;
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, "Menlo", "Monaco", "Consolas", "Courier New",
     monospace;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #aaaaaa;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.title {
+  margin: 20px 0;
+  text-transform: uppercase;
+  color: #ff6633;
+}
+
+.todo-form__input {
+  height: 30px;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid #ff6633;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+.todo-form__input:focus {
+  outline: none;
+  box-shadow: 0 0 4px #999999;
+  transition: 0.3s;
+}
+
+.todo-form__submit {
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 0 50% 50% 0;
+  background: linear-gradient(135deg, #ff6633, #ffff00);
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.todo-form__submit:hover {
+  box-shadow: 0 0 4px #999999;
+  transition: 0.3s;
+}
+
+.todo-form__submit:active {
+  box-shadow: 0 0 1px #999999;
+  transition: 0.3s;
+}
+
+.no-todos {
+  margin: 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px #aaaaaa;
+}
+
+.todo-item__todo,
+.todo-item__text,
+.todo-item__btn {
+  display: block;
+  margin: auto 0;
+}
+
+.todo-item__todo {
+  display: flex;
+}
+
+.todo-item__todo-checkbox {
+  appearance: none;
+  display: block;
+  margin-right: 1rem;
+  background: #ffffff;
+  border: 1px solid #ff6633;
+  padding: 10px;
+  border-radius: 4px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.todo-item__todo-checkbox:hover,
+.todo-item__todo-checkbox:checked,
+.todo-item__todo-checkbox:active {
+  box-shadow: 0 0 3px #ff6633, inset 0 0 3px #ff6633;
+  transition: 0.3s;
+}
+
+.todo-item__todo-checkbox:checked {
+  background-color: #ff6633;
+  transition: 0.3s;
+}
+
+.todo-item__todo-checkbox:checked:after {
+  content: "\2714";
+  color: #ffffff;
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  left: 4px;
+  transition: 0.3s;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.todo-item__btn {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #ff6633, #ffff00);
+  color: #ffffff;
+  box-shadow: 0 0 4px #999999;
+  transition: 0.3s;
+}
+
+.todo-item__btn:hover {
+  box-shadow: 0 0 4px #000000;
+  transition: 0.3s;
+}
+
+.todo-item__btn:active {
+  box-shadow: 0 0 1px #000000;
+  transition: 0.3s;
+}
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff6633;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
